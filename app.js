@@ -15,14 +15,14 @@ const productos = [
     },
     {
         categoria: "Moles",
-        nombre: "Mole Negro 500 g ",
+        nombre: "Mole Negro 250 g ",
         desc: "Receta tradicional oaxaqueña, elaborada con una cuidadosa selección de chiles, especias y cacao.",
         precio: 50,
         foto: "mole-negro.jpeg"
     },
     {
         categoria: "Moles",
-        nombre: "Mole negro",
+        nombre: "Mole negro 500 g",
         desc: "Receta tradicional oaxaqueña, elaborada con una cuidadosa selección de chiles, especias y cacao.",
         precio: 100,
         foto: "mole-negro.jpeg"
