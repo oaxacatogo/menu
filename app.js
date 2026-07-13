@@ -113,7 +113,7 @@ function render(filtro) {
             const el = document.createElement("div");
             el.className = "producto";
             el.innerHTML = `
-          <img class="producto-img" src="fotos/${p.foto}" alt="${p.nombre}" loading="lazy">
+          <img class="producto-img" src="fotos/${p.foto}" data-full="fotos/${p.foto}" alt="${p.nombre}" loading="lazy">
           <div class="producto-info">
             <div class="producto-cabecera">
               <h3>${p.nombre}</h3>
@@ -146,3 +146,37 @@ categorias.forEach(cat => {
 });
 
 render("Todos");
+
+// --- Modal de imagen ---
+const modal = document.getElementById("modalImagen");
+const modalImg = document.getElementById("modalImg");
+const modalCerrar = document.getElementById("modalCerrar");
+
+function abrirModal(src, alt) {
+    modalImg.src = src;
+    modalImg.alt = alt;
+    modal.classList.add("abierto");
+}
+
+function cerrarModal() {
+    modal.classList.remove("abierto");
+    modalImg.src = "";
+}
+
+// Delegación de eventos: funciona con las tarjetas aunque se re-rendericen al filtrar
+contenido.addEventListener("click", (e) => {
+    const img = e.target.closest(".producto-img");
+    if (img) {
+        abrirModal(img.dataset.full, img.alt);
+    }
+});
+
+modalCerrar.addEventListener("click", cerrarModal);
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) cerrarModal();
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") cerrarModal();
+});
