@@ -80,7 +80,7 @@ const productos = [
 ];
 
 // Número de WhatsApp del negocio (formato: código de país + número, sin espacios ni +)
-const NUMERO_WHATSAPP = "+526241555147"; // <-- reemplaza por el número real
+const NUMERO_WHATSAPP = "+529518834911"; // <-- reemplaza por el número real
 
 const categorias = ["Todos", ...new Set(productos.map(p => p.categoria))];
 const nav = document.getElementById("filtros");
