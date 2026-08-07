@@ -238,6 +238,46 @@ main {
   fill: currentColor;
 }
 
+
+/* ───────── Botón de idioma ───────── */
+.btn-idioma {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 999;
+  background: var(--turquesa);
+  color: var(--arena);
+  border: none;
+  border-radius: 20px;
+  padding: 0.45rem 1rem;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.btn-idioma:hover,
+.btn-idioma:focus-visible {
+  background: var(--terracota);
+  outline: none;
+}
+
+.btn-idioma:active {
+  transform: scale(0.96);
+}
+
+@media (max-width:480px) {
+  .btn-idioma {
+    top: 12px;
+    right: 12px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.7rem;
+  }
+}
+
 /* ───────── Botón flotante WhatsApp ───────── */
 .wa-float {
   position: fixed;
