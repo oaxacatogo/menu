@@ -118,6 +118,8 @@ const NUMERO_WHATSAPP = "+529518834911"; // <-- reemplaza por el número real
 // ───────── Traducciones de interfaz y categorías ─────────
 const textos = {
     es: {
+        titulo: "Productos tradicionales de Oaxaca",
+        descripcion: "Productos elaborados con manos oaxaqueñas, seleccionados para llevar un pedacito de Oaxaca contigo.",
         todos: "Todos",
         pedir: "Pedir por WhatsApp",
         footer: "Productos tradicionales de Oaxaca.",
@@ -125,6 +127,8 @@ const textos = {
         filtroAria: "Filtrar por categoría"
     },
     en: {
+        titulo: "Traditional products from Oaxaca",
+        descripcion: "Products made by Oaxacan hands, selected to take a little piece of Oaxaca with you.",
         todos: "All",
         pedir: "Order via WhatsApp",
         footer: "Traditional products from Oaxaca.",
@@ -210,6 +214,11 @@ function render(filtro) {
     });
 }
 
+function updateHeader() {
+    document.querySelector("h1#titulo").textContent = textos[idioma].titulo;
+    document.querySelector("p#descripcion").textContent = textos[idioma].descripcion;
+}
+
 function renderNav() {
     nav.innerHTML = "";
     nav.setAttribute("aria-label", textos[idioma].filtroAria);
@@ -244,6 +253,7 @@ render(categoriaActiva);
 
 btnIdioma.addEventListener("click", () => {
     idioma = idioma === "es" ? "en" : "es";
+    updateHeader();
     renderNav();
     actualizarTextosFijos();
     render(categoriaActiva);
