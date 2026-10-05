@@ -1,0 +1,15 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Node (el sitio hoy no tiene dependencias, pero evita subir node_modules)
+node_modules/
+
+# Nota: las fotos originales (fotos/*.jpeg, logo.jpeg) SÍ se versionan.
+# Son la copia maestra de la que se regeneran las versiones ligeras con
+# tools/optimize-images.py, así que quitarlas del repo perdería material.

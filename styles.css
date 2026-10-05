@@ -1,10 +1,26 @@
+/* ═══════════════════════════════════════════════════════════
+   Oaxaca to go · hoja de estilos
+   Paleta centralizada con nombres que describen el color real
+   (antes --azul-profundo era dorado y --arena-sombra era blanco,
+   lo que dejaba bordes invisibles por todo el sitio).
+   ═══════════════════════════════════════════════════════════ */
+
 :root {
-  --azul-profundo: #ad9858;
-  --turquesa: #2E8B8B;
-  --arena: #FDF9EE;
-  --terracota: #af3a1f;
-  --arena-sombra: #ffffff;
-  --casi-negro: #1A1A1A;
+  /* Acentos */
+  --dorado:        #ad9858;  /* header, footer, horizonte               */
+  --dorado-oscuro: #8a6f2c;  /* dorado legible sobre crema · 4.9:1       */
+  --turquesa:      #2e8b8b;  /* bordes y estadoshover                    */
+  --turquesa-osc:  #1f6b6b;  /* turquesa legible como texto · 6.2:1     */
+  --terracota:     #af3a1f;  /* precios y acentos cálidos                */
+
+  /* Neutros */
+  --arena:       #fdf9ee;  /* fondo de página                          */
+  --blanco:      #ffffff;
+  --crema:       #fffdf8;  /* fondo de las tarjetas                    */
+  --borde:       #e6dece;  /* bordes visibles (antes: blanco = invisible) */
+  --borde-fuerte:#d6cab4;
+  --texto-suave: #5a5a52;  /* texto secundario                          */
+  --casi-negro:  #1a1a1a;
 }
 
 * {
@@ -13,16 +29,23 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--arena);
   color: var(--casi-negro);
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Work Sans', system-ui, sans-serif;
   line-height: 1.5;
+  /* el modal bloquea el scroll con esta clase en <body> */
+  overflow-wrap: break-word;
 }
 
+/* ─────────────── Header ─────────────── */
 header {
-  background: var(--azul-profundo);
-  color: var(--arena);
+  background: var(--dorado);
+  color: var(--casi-negro);  /* texto oscuro sobre dorado: 6.1:1 */
   padding: 3rem 1.5rem 2.5rem;
   text-align: center;
   position: relative;
@@ -37,7 +60,7 @@ header {
 }
 
 header h1 {
-  font-family: 'Zilla Slab', serif;
+  font-family: 'Zilla Slab', Georgia, serif;
   font-weight: 700;
   font-size: 2.4rem;
   letter-spacing: 0.5px;
@@ -47,8 +70,11 @@ header p {
   font-size: 0.85rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--arena-sombra);
+  color: #3b2f10;  /* texto secundario legible sobre dorado */
   margin-top: 0.6rem;
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* horizonte SVG como firma visual, en la base del header */
@@ -62,8 +88,10 @@ header p {
 .horizonte line {
   stroke: var(--terracota);
   stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
 }
 
+/* ─────────────── Filtros ─────────────── */
 nav {
   display: flex;
   justify-content: center;
@@ -74,34 +102,35 @@ nav {
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid var(--arena-sombra);
+  border-bottom: 1px solid var(--borde-fuerte);
 }
 
 nav button {
-  font-family: 'Work Sans', sans-serif;
+  font-family: inherit;
   font-size: 0.75rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   background: transparent;
-  border: 1px solid var(--arena-sombra);
+  border: 1px solid var(--borde-fuerte);
   color: var(--casi-negro);
   padding: 0.5rem 1rem;
   cursor: pointer;
+  border-radius: 2px;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-nav button:hover,
-nav button:focus-visible {
+nav button:hover {
   border-color: var(--turquesa);
-  outline: none;
+  background: #f2ece0;
 }
 
 nav button.activo {
-  background: var(--turquesa);
-  border-color: var(--turquesa);
-  color: var(--arena);
+  background: var(--turquesa-osc);
+  border-color: var(--turquesa-osc);
+  color: var(--blanco);
 }
 
+/* ─────────────── Contenido ─────────────── */
 main {
   max-width: 700px;
   margin: 0 auto;
@@ -112,66 +141,56 @@ main {
   margin-top: 2.5rem;
 }
 
+.categoria:first-child {
+  margin-top: 1.5rem;
+}
+
 .categoria-titulo {
-  font-family: 'Zilla Slab', serif;
+  font-family: 'Zilla Slab', Georgia, serif;
   font-weight: 600;
   font-size: 1.4rem;
-  color: var(--azul-profundo);
+  color: var(--dorado-oscuro);
   margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--borde);
 }
 
 .producto {
   display: flex;
   align-items: stretch;
   gap: 1rem;
-  background: #FFFDF8;
-  border: 1px solid var(--arena-sombra);
+  background: var(--crema);
+  border: 1px solid var(--borde);
   padding: 0.7rem;
   margin-bottom: 0.9rem;
+  border-radius: 4px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.producto:hover {
+  border-color: var(--borde-fuerte);
+  box-shadow: 0 2px 10px rgba(26, 26, 26, 0.05);
+}
+
+/* El botón envuelve a la imagen para que el modal sea alcanzable
+   con teclado. Antes era un <img> suelto: solo con ratón. */
+.producto-foto {
+  flex-shrink: 0;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: var(--arena);
+  cursor: zoom-in;
+  border-radius: 2px;
+  line-height: 0;
 }
 
 .producto-img {
   width: 88px;
-  aspect-ratio: 3/4;
+  height: 117px;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  flex-shrink: 0;
-  background: var(--arena-sombra);
-  cursor: zoom-in;
-}
-
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: var(--azul-profundo);
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1.5rem;
-}
-
-.modal-overlay.abierto {
-  display: flex;
-}
-
-.modal-overlay img {
-  max-width: 100%;
-  max-height: 85vh;
-  object-fit: contain;
-  border: 3px solid var(--arena);
-}
-
-.modal-cerrar {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.5rem;
-  background: transparent;
-  border: none;
-  color: var(--arena);
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  font-family: 'Work Sans', sans-serif;
+  display: block;
 }
 
 .producto-info {
@@ -186,10 +205,11 @@ main {
   justify-content: space-between;
   align-items: baseline;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .producto-info h3 {
-  font-family: 'Zilla Slab', serif;
+  font-family: 'Zilla Slab', Georgia, serif;
   font-weight: 600;
   font-size: 1.05rem;
   color: var(--casi-negro);
@@ -197,12 +217,12 @@ main {
 
 .producto-info p {
   font-size: 0.85rem;
-  color: #5a5a52;
+  color: var(--texto-suave);
   margin-top: 0.25rem;
 }
 
 .producto-precio {
-  font-family: 'Work Sans', sans-serif;
+  font-family: inherit;
   font-weight: 600;
   font-size: 1rem;
   color: var(--terracota);
@@ -213,44 +233,96 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  align-self: flex-start;
+  /* margin-top: auto empuja el botón al fondo para que todas las
+     tarjetas alineen su CTA, aunque unas tengan texto más largo */
   margin-top: auto;
   padding-top: 0.6rem;
-  font-family: 'Work Sans', sans-serif;
+  font-family: inherit;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: var(--turquesa);
+  color: var(--turquesa-osc);
   text-decoration: none;
-  border-top: 1px solid var(--arena-sombra);
+  border-top: 1px solid var(--borde);
   width: 100%;
-  margin-top: 0.5rem;
+  align-self: stretch;
 }
 
 .btn-whatsapp:hover {
-  color: var(--azul-profundo);
+  color: var(--dorado-oscuro);
 }
 
 .btn-whatsapp svg {
   width: 14px;
   height: 14px;
   fill: currentColor;
+  flex-shrink: 0;
 }
 
+/* ─────────────── Modal ─────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  /* velo oscuro: hace que la foto resalte y da 16:1 de contraste
+     al botón de cerrar */
+  background: rgba(20, 18, 14, 0.94);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
 
-/* ───────── Botón de idioma ───────── */
+.modal-overlay.abierto {
+  display: flex;
+  /* sin animación si el usuario pidió menos movimiento */
+  animation: aparecer 0.15s ease-out;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-overlay img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 3px solid var(--arena);
+  border-radius: 2px;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: transparent;
+  border: 0;
+  color: var(--arena);
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+.modal-cerrar:hover {
+  color: #fff;
+}
+
+/* ─────────────── Botón de idioma ─────────────── */
 .btn-idioma {
   position: fixed;
   top: 18px;
   right: 18px;
-  z-index: 999;
-  background: var(--turquesa);
-  color: var(--arena);
-  border: none;
+  z-index: 90;
+  background: var(--turquesa-osc);
+  color: var(--blanco);
+  border: 2px solid var(--arena);
   border-radius: 20px;
   padding: 0.45rem 1rem;
-  font-family: 'Work Sans', sans-serif;
+  font-family: inherit;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -259,41 +331,29 @@ main {
   transition: background 0.15s ease, transform 0.15s ease;
 }
 
-.btn-idioma:hover,
-.btn-idioma:focus-visible {
+.btn-idioma:hover {
   background: var(--terracota);
-  outline: none;
 }
 
 .btn-idioma:active {
   transform: scale(0.96);
 }
 
-@media (max-width:480px) {
-  .btn-idioma {
-    top: 12px;
-    right: 12px;
-    padding: 0.4rem 0.85rem;
-    font-size: 0.7rem;
-  }
-}
-
-/* ───────── Botón flotante WhatsApp ───────── */
+/* ─────────────── Botón flotante WhatsApp ─────────────── */
 .wa-float {
   position: fixed;
   bottom: 26px;
   right: 26px;
   width: 60px;
   height: 60px;
-  background: #25D366;
+  background: #25d366;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  z-index: 999;
+  z-index: 90;
   transition: transform 0.2s ease;
-  cursor: pointer;
 }
 
 .wa-float:hover {
@@ -305,25 +365,139 @@ main {
   height: 30px;
 }
 
+/* ─────────────── Pie ─────────────── */
 footer {
   text-align: center;
   padding: 2rem 1rem;
-  background: var(--azul-profundo);
-  color: var(--arena-sombra);
+  background: var(--dorado);
+  color: #3b2f10;
   font-size: 0.8rem;
   letter-spacing: 1px;
 }
 
-@media (max-width:480px) {
+/* ─────────────── Accesibilidad ─────────────── */
+/* Un único anillo de foco visible en toda la página */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--terracota);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Visible solo para lectores de pantalla */
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Respeta la preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─────────────── Responsive ─────────────── */
+@media (max-width: 480px) {
+  header {
+    padding: 2.5rem 1rem 2rem;
+  }
+
   header h1 {
     font-size: 1.9rem;
   }
 
+  header p {
+    font-size: 0.75rem;
+    letter-spacing: 1.2px;
+  }
+
+  .logo {
+    width: 170px;
+    height: 170px;
+  }
+
+  nav {
+    padding: 1rem 0.75rem;
+    gap: 0.35rem;
+  }
+
+  nav button {
+    font-size: 0.68rem;
+    padding: 0.45rem 0.7rem;
+    letter-spacing: 1px;
+  }
+
   .producto-img {
     width: 76px;
+    height: 101px;
   }
 
   .producto-info h3 {
     font-size: 0.98rem;
+  }
+
+  .btn-idioma {
+    top: 12px;
+    right: 12px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.7rem;
+  }
+
+  .wa-float {
+    width: 54px;
+    height: 54px;
+    bottom: 18px;
+    right: 18px;
+  }
+}
+
+/* En pantallas muy angostas el logo chocaba con el botón de idioma */
+@media (max-width: 360px) {
+  .logo {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* ─────────────── Impresión ───────────────
+   La gente guarda el menú en PDF o lo imprime; que salga limpio. */
+@media print {
+  nav,
+  .btn-idioma,
+  .wa-float,
+  .modal-overlay,
+  .btn-whatsapp {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  header,
+  footer {
+    background: none;
+    color: #000;
+    padding: 1rem;
+  }
+
+  .producto {
+    break-inside: avoid;
+    border: 1px solid #ccc;
   }
 }
