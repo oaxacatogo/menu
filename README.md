@@ -91,5 +91,5 @@ Pages, publica la rama `main` desde *Settings → Pages*.
 
 No hay suite en el repo. Al tocar `app.js` o `sw.js` conviene abrir la página
 en un navegador real y comprobar: que carga sin errores en la consola, que los
-11 botones de WhatsApp abren el chat, que el modal abre con teclado y que el
+14 botones de WhatsApp abren el chat, que el modal abre con teclado y que el
 menú sigue abreiendo con la red apagada.

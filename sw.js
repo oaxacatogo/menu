@@ -10,7 +10,7 @@
    invalida la copia guardada en los teléfonos de los clientes.
    ═══════════════════════════════════════════════════════════ */
 
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE = `oaxacatogo-${VERSION}`;
 
 /* El "cascarón" mínimo para que el sitio se vea aunque no haya red.

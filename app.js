@@ -16,6 +16,26 @@ const productos = [
     },
     {
         categoria: "Mezcales",
+        nombre: "Mezcal Añejo 250 ml",
+        nombre_en: "Añejo Mezcal 250 ml",
+        desc: "Notas profundas, maduras y artesanales. Su práctico tamaño de 250 ml es perfecto para disfrutar en tu terraza o llevar el auténtico sabor de Oaxaca en tu maleta.",
+        desc_en: "Deep, mature, and artisanal notes. Its practical 250 ml size is perfect to enjoy on your balcony or to pack a true taste of Oaxaca in your luggage.",
+        precio: 170,
+        precio_usd: 12,
+        foto: "mezcal-anejo"
+    },
+    {
+        categoria: "Mezcales",
+        nombre: "Mezcal Reposado con Gusano 250 ml",
+        nombre_en: "Reposado Mezcal with Agave Worm 250 ml",
+        desc: "Tradición y carácter excepcional en cada trago. Ideal para consentirte durante tus vacaciones en Huatulco o como un regalo muy especial.",
+        desc_en: "Tradition and exceptional character in every sip. Ideal to treat yourself during your stay in Huatulco or as a unique gift.",
+        precio: 170,
+        precio_usd: 12,
+        foto: "mezcal-reposado"
+    },
+    {
+        categoria: "Mezcales",
         nombre: "Trilogía de Mezcal",
         nombre_en: "Mezcal Trilogy",
         desc: "Tres expresiones artesanales que muestran la diversidad del agave, elaborado con manos oaxaqueñas de San Pablo Villa de Mitla.",
@@ -114,6 +134,16 @@ const productos = [
         precio_usd: 6,
         foto: "sal-gusano"
     },
+    {
+        categoria: "Café",
+        nombre: "Café de Oaxaca en Grano 300 g",
+        nombre_en: "Oaxacan Whole Bean Coffee 300 g",
+        desc: "Café de altura con tueste medio-oscuro. Despierta todas las mañanas con el inconfundible aroma y sabor de los campos oaxaqueños.",
+        desc_en: "High-altitude coffee with a medium-dark roast. Wake up every morning with the unmistakable aroma and flavor of the Oaxaca fields.",
+        precio: 150,
+        precio_usd: 10,
+        foto: "cafe-grano"
+    },
 ];
 
 /* ─────────── Configuración del negocio ───────────
@@ -167,7 +197,8 @@ const categoriasTraducidas = {
     "Salsas": "Sauces",
     "Chocolates": "Chocolates",
     "Bebidas en polvo": "Powdered Drinks",
-    "Sales tradicionales": "Traditional Salts"
+    "Sales tradicionales": "Traditional Salts",
+    "Café": "Coffee"
 };
 
 /* ─────────── Estado ─────────── */
